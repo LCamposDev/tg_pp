@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION["email"])) {
+    header("location: html/cadastro.html");
+}
+?>
+
 <!doctype html>
 <html lang="pt-BR">
   <head>
@@ -5,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cadastro</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/usuario.css">
   </head>
   <body>
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -20,32 +29,16 @@
                 </li>
                 <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Usuario
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="?page=novo">Cadastrar</a></li>
-                    <li><a class="dropdown-item" href="?page=listar">Listar</a></li>
-                </ul>
-                </li>
-                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Produto
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Cadastrar</a></li>
-                    <li><a class="dropdown-item" href="#">Listar</a></li>
-                </ul>
-                </li>
-                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Vendas
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Cadastrar</a></li>
-                    <li><a class="dropdown-item" href="#">Listar</a></li>
+                    <li><a class="dropdown-item" href="?page=novoVendas">Cadastrar</a></li>
+                    <li><a class="dropdown-item" href="?page=listarVendas">Listar</a></li>
                 </ul>
                 </li>
             </ul>
+            <h2>Bem-vindo, <?php echo $_SESSION["email"]; ?>!</h2>
+            <a href="logout.php">Sair</a>
         </div>
         </div>
         </nav>
@@ -56,17 +49,17 @@
             <?php
                 include("config.php");
                 switch(@$_REQUEST["page"]) {
-                    case "novo":
-                        include("novo-usuario.php");
+                    case "novoVendas":
+                        include("novo-vendas.php");
                     break;
-                    case "listar":
-                        include("listar-usuario.php");
+                    case "listarVendas":
+                        include("listar-vendas.php");
                     break;
-                    case "salvar":
-                        include("salvar-usuario.php");
+                    case "salvarVendas":
+                        include("salvar-vendas.php");
                     break;
-                    case "editar":
-                        include("editar-usuario.php");
+                    case "editarVendas";
+                        include("editar-vendas.php");
                     break;
                     default:
                         print "<h1>Bem Vindo!</h1>";
@@ -75,7 +68,7 @@
             </div>
         </div>            
     </div>
-
+    
     <script src="js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

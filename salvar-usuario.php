@@ -2,11 +2,12 @@
     switch ($_REQUEST["acao"]) {
         case 'cadastrar':
            $nome = $_POST["nome"];
+           $cargo = $_POST["cargo"];
            $email = $_POST["email"];
            $senha = md5($_POST["senha"]);
            $telefone = $_POST["telefone"];
 
-           $sql = "INSERT INTO usuarios (nome, email, senha, telefone) VALUES ('{$nome}', '{$email}', '{$senha}', '{$telefone}')";
+           $sql = "INSERT INTO usuarios (nome, cargo, email, senha, telefone) VALUES ('{$nome}', '{$cargo}', '{$email}', '{$senha}', '{$telefone}')";
 
            $res = $conn->query($sql); 
 

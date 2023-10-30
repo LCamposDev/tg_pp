@@ -11,6 +11,7 @@
             print "<tr>";
             print "<th>#</th>";
             print "<th>Nome</th>";
+            print "<th>Cargo</th>";
             print "<th>E-mail</th>";
             print "<th>Telefone</th>";
             print "<th>Ações</th>";
@@ -19,6 +20,7 @@
             print "<tr>";
             print "<td>".$row->id."</td>";
             print "<td>".$row->nome."</td>";
+            print "<td>".$row->cargo."</td>";
             print "<td>".$row->email."</td>";
             print "<td>".$row->telefone."</td>";
             print "<td>
