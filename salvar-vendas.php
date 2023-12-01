@@ -1,12 +1,15 @@
 <?php
     switch ($_REQUEST["acaovendas"]) {
         case 'vendas':
-           $tamanho = $_POST["tamanho"];
-           $cor = $_POST["cor"];
-           $prazo = $_POST["prazo"];
-           $produto = $_POST["produto"];
+            $id = $_POST["id"];
+            $data = $_POST["data"];
+            $produto = $_POST["produto"];
+            $desconto = ($_POST["desconto"]);
+            $valor_desconto = $_POST["valor_desconto"];
+            $custo_total = $_POST["custo_total"];
+            $valor = $_POST["valor"];
 
-           $sql = "INSERT INTO vendas (tamanho, cor, prazo, produto) VALUES ('{$tamanho}', '{$cor}', '{$prazo}', '{$produto}')";
+           $sql = "INSERT INTO vendas (id, data, produto, desconto, valor_desconto, custo_total, valor) VALUES ('{$id}', '{$data}', '{$produto}', '{$desconto}', '{$valor_desconto}', '{$custo_total}', '{$valor}')";
 
            $res = $conn->query($sql); 
 
@@ -20,12 +23,15 @@
         break;
 
         case 'editar':
-            $tamanho = $_POST["tamanho"];
-            $cor = $_POST["cor"];
-            $prazo = $_POST["prazo"];
+            $id = $_POST["id"];
+            $data = $_POST["data"];
             $produto = $_POST["produto"];
+            $desconto = $_POST["desconto"];
+            $valor_desconto = $_POST["valor_desconto"];
+            $custo_total = $_POST["custo_total"];
+            $valor = $_POST["valor"];
 
-            $sql = "UPDATE vendas SET tamanho='{$tamanho}', cor='{$cor}', prazo='{$prazo}', produto='{$produto}' WHERE id=".$_REQUEST["id"];
+            $sql = "UPDATE vendas SET data='{$data}', produto='{$produto}', desconto='{$desconto}', valor_desconto='{$valor_desconto}', custo_total='{$custo_total}', valor='{$valor}' WHERE id=".$_REQUEST["id"];
 
             $res = $conn->query($sql); 
 

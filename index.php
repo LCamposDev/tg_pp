@@ -1,9 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION["email"])) {
-    header("location: html/cadastro.html");
-}
+
 ?>
 
 <!doctype html>
@@ -36,6 +34,15 @@ if (!isset($_SESSION["email"])) {
                     <li><a class="dropdown-item" href="?page=listarVendas">Listar</a></li>
                 </ul>
                 </li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Produto
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="?page=novoProduto">Cadastrar</a></li>
+                    <li><a class="dropdown-item" href="?page=listarProduto">Listar</a></li>
+                </ul>
+                </li>
             </ul>
             <h2>Bem-vindo, <?php echo $_SESSION["email"]; ?>!</h2>
             <a href="logout.php">Sair</a>
@@ -61,6 +68,18 @@ if (!isset($_SESSION["email"])) {
                     case "editarVendas";
                         include("editar-vendas.php");
                     break;
+                    case "novoProduto":
+                        include("novo-produto.php");
+                    break;
+                    case "listarProduto":
+                        include("listar-produto.php");
+                    break;
+                    case "salvarProduto":
+                        include("salvar-produto.php");
+                    break;
+                    case "editarProduto";
+                        include("editar-produto.php");
+                    break;
                     default:
                         print "<h1>Bem Vindo!</h1>";
                 }
@@ -69,6 +88,7 @@ if (!isset($_SESSION["email"])) {
         </div>            
     </div>
     
+    <script src="js/checkbox.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

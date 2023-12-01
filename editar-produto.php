@@ -1,6 +1,6 @@
-<h1>Editar Vendas</h1>
+<h1>Editar Produto</h1>
 <?php
-    $sql = "SELECT * FROM vendas WHERE id=".$_REQUEST["id"];
+    $sql = "SELECT * FROM produto WHERE id=".$_REQUEST["id"];
 
     $res = $conn->query($sql);
     if (!$res) {
@@ -12,36 +12,36 @@
     }
     $row = $res->fetch_object();
 ?>
-<form action="?page=salvarVendas" method="POST">
-    <input type="hidden" name="acaovendas" value="editar">
+<form action="?page=salvarProduto" method="POST">
+    <input type="hidden" name="acaoproduto" value="vendas">
     <input type="hidden" name="id" value="<?php print $row->id; ?>">
     <div class="mb-3">
         <label>id</label>
         <input type="number" name="id" class="form-control">
     </div>
     <div class="mb-3">
-        <label>data</label>
-        <input type="date" name="data" class="form-control">
+        <label>Nome</label>
+        <input type="text" name="nome" class="form-control">
     </div>
     <div class="mb-3">
-        <label>Produto</label>
-        <input type="text" name="produto" class="form-control">
+        <label>Descrição</label>
+        <input type="text" name="descricao" class="form-control">
     </div>
     <div class="mb-3">
-        <label>Desconto</label>
-        <input type="checkbox" name="desconto" class="form-control">
+        <label>Tamanho</label>
+        <input type="number" name="tamanho" class="form-control">
     </div>
     <div class="mb-3">
-        <label>Valor com Desconto</label>
-        <input type="number" name="valor_desconto" class="form-control">
-    </div>
-    <div class="mb-3">
-        <label>Custo Total</label>
-        <input type="number" name="custo_total" class="form-control">
+        <label>Cor</label>
+        <input type="text" name="cor" class="form-control">
     </div>
     <div class="mb-3">
         <label>Valor</label>
         <input type="number" name="valor" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label>Custo</label>
+        <input type="number" name="custo" class="form-control">
     </div>
     <div class="mb-3">
         <button type="submit" class="btn btn-primary">Enviar</button>
